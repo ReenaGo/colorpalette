@@ -3,27 +3,33 @@ import './App.css';
 import Colors from './colors'
 
 class ColorApp extends Component {
-  state = {
-    color: [
-      {color: this.getRandomColor(),
-       lock: true
-      },
-      {color: this.getRandomColor(),
-        lock: true
-      },
-      {color: this.getRandomColor(),
-        lock: true
-      },
-      {color: this.getRandomColor(),
-        lock: true
-      },
-      {color: this.getRandomColor(),
-        lock: true
-      },
-    ]
-  }
 
-  this.lockButtonToggle = this.lockButtonToggle.bind(this);
+  constructor(){
+    super();
+    let state = {
+      colors: [
+        {color: this.getRandomColor(),
+         lock: false
+        },
+        {color: this.getRandomColor(),
+          lock: false
+        },
+        {color: this.getRandomColor(),
+          lock: false
+        },
+        {color: this.getRandomColor(),
+          lock: false
+        },
+        {color: this.getRandomColor(),
+          lock: false
+        },
+      ]
+    }
+    this.state = state
+  }
+  
+
+  
 
 
   getRandomColor() {
@@ -32,6 +38,7 @@ class ColorApp extends Component {
 
   lockButtonToggle=(i)=> {
     const colors = this.state.colors.map((color, index)=>{
+      
       if (i===index) {
          return {
            ...color,
@@ -43,8 +50,9 @@ class ColorApp extends Component {
     })
     
     this.setState({
-      color: colors
- }
+      colors: colors
+   })
+  }
   
   // RandomizeColorHandler= ()=> {
 
@@ -61,14 +69,11 @@ class ColorApp extends Component {
   // }
 
   render()  {
-    const colors = this.state.color.map((color, i)=>{
+    const colors = this.state.colors.map((color, i)=>{
       return <Colors 
-        hex={color.color} 
-        color={color.color}
-        lock={color.lock}
+        colorObj = {color}
         key={i}
         toggle={()=>this.lockButtonToggle(i)}
-        
         />
     })
     return (
