@@ -3,6 +3,7 @@ import './App.css';
 import Colors from './colors'
 
 class ColorApp extends Component {
+<<<<<<< HEAD
   constructor () {
         super();
         let state = {
@@ -27,6 +28,35 @@ class ColorApp extends Component {
         this.state=state
       }
     
+=======
+
+  constructor(){
+    super();
+    let state = {
+      colors: [
+        {color: this.getRandomColor(),
+         lock: false
+        },
+        {color: this.getRandomColor(),
+          lock: false
+        },
+        {color: this.getRandomColor(),
+          lock: false
+        },
+        {color: this.getRandomColor(),
+          lock: false
+        },
+        {color: this.getRandomColor(),
+          lock: false
+        },
+      ]
+    }
+    this.state = state
+  }
+  
+
+  
+>>>>>>> deb97316a92dc9fbf8b6cb956a8679c996ee408a
 
 
   getRandomColor=()=> {
@@ -34,7 +64,12 @@ class ColorApp extends Component {
   };
 
   lockButtonToggle=(i)=> {
+<<<<<<< HEAD
     const newColors = this.state.colors.map((color, index)=>{
+=======
+    const colors = this.state.colors.map((color, index)=>{
+      
+>>>>>>> deb97316a92dc9fbf8b6cb956a8679c996ee408a
       if (i===index) {
          return {
            ...color,
@@ -46,9 +81,15 @@ class ColorApp extends Component {
     })
     
     this.setState({
+<<<<<<< HEAD
       colors: newColors
     });
  };
+=======
+      colors: colors
+   })
+  }
+>>>>>>> deb97316a92dc9fbf8b6cb956a8679c996ee408a
   
   RandomizeColorHandler () {
       let newColors = this.state.colors.map((color)=>{
@@ -67,10 +108,29 @@ class ColorApp extends Component {
       })
     }
 
+<<<<<<< HEAD
   render() {
     const colors = this.state.colors.map((color, i)=>{
       return <Colors 
         colorObj={color}
+=======
+  //   if (color.lock) {
+  //     return color
+  //   }
+  //   else {
+  //     return{
+  //     ...color,
+  //     color: this.getRandomColor
+  //     }
+  //   }
+
+  // }
+
+  render()  {
+    const colors = this.state.colors.map((color, i)=>{
+      return <Colors 
+        colorObj = {color}
+>>>>>>> deb97316a92dc9fbf8b6cb956a8679c996ee408a
         key={i}
         toggle={()=>this.lockButtonToggle(i)}
         />
